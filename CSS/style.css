@@ -1,0 +1,134 @@
+#bodylanding {
+    background-image: url('https://i.postimg.cc/x8JWp8ND/Espresso-Yourself.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.shopName {
+    font-family: 'DM Serif Display', serif;
+    position: absolute;
+    margin-top: 7%;
+    left: 76%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 570%;
+}
+
+.shopName-mobile {
+    font-family: 'DM Serif Display', serif;
+    color: white;
+    font-size: 50px;
+}
+
+
+.paragraph {
+    background-color: black;
+    font-size: 19px;
+    position: absolute;
+    margin-top: 20%;
+    left: 65%;
+    color: white;
+}
+
+.paragraph-mobile {
+    background-color: black;
+    font-size: 19px;
+    color: white;
+}
+
+.button {
+    background-color: #4e2116;
+    border-radius: 19px;
+    width: 17%;
+    height: 50px;
+    position: absolute;
+    margin-top: 25%;
+    left: 65%;
+    color: white;
+}
+
+.text {
+    fill: white
+}
+
+.footerTag {
+    width: 100%;
+    max-width: 1220px;
+    margin-right: auto;
+    margin-left: auto;
+    bottom: 0;
+    position: sticky;
+    right: 0;
+    left: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    background-color: #fff4f0;
+}
+
+footer span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-fluid {
+    width: 100% !important;
+    max-width: 1220px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+@media screen and (max-width: 480px) {
+    /* .svg-text {
+        display: none;
+    } */
+
+    #bodylanding {
+        background-image: url('https://i.postimg.cc/x8JWp8ND/Espresso-Yourself.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+    }
+
+    .deskTop {
+        display: none;
+    }
+
+    .button {
+        background-color: #4e2116;
+        border-radius: 19px;
+        width: 300px;
+        height: 50px;
+        position: relative;
+        left: 0;
+        color: white;
+    }
+
+    .mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20%;
+    }
+
+}
+
+@media screen and (min-width: 480px) {
+
+    .mobile {
+        display: none;
+    }
+
+}
