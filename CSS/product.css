@@ -1,0 +1,140 @@
+.bodyProduct {
+  background-color: #cc8046;
+  height: 100%;
+  overflow: hidden;
+}
+
+.btnP {
+  background-color: black;
+  gap: 1rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.productSorting {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+}
+
+.footerTag {
+  width: 100%;
+  /* max-width: 1220px; */
+  /* margin-right: auto;
+    margin-left: auto; */
+  bottom: 0;
+  position: sticky;
+  right: 0;
+  left: 0;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  background-color: #fff4f0;
+}
+
+footer span {
+  font-family: "DM Serif Display", serif;
+  font-size: 19px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.container-fluid {
+  width: 100% !important;
+  max-width: 1220px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.photo {
+  width: 350px;
+  aspect-ratio: 2/2;
+}
+
+.button {
+  background-color: #4e2116;
+  width: 180px;
+  height: 40px;
+  margin-bottom: 8%;
+}
+
+.text {
+  font-size: 16px;
+  font-family: "Hedvig Letters Serif", serif;
+}
+
+.itemName {
+  font-family: "Hedvig Letters Serif", serif;
+}
+
+.productsDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-top: 30px;
+}
+
+.productSortingDiv {
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 400px;
+}
+
+#loading{
+  display: flex;
+  justify-content: center;
+  align-items: center˝;
+}
+
+.spinner {
+  border: 7px solid #f3f3f3; /* Light grey */
+  border-top: 7px solid black; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+#pageContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+@media screen and (max-width: 480px) {
+  .productCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+}
