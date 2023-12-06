@@ -1,8 +1,10 @@
 let purchased = JSON.parse(localStorage.getItem("purchased"));
 let table = document.querySelector("main");
+let totalAmountElement = document.getElementById("totalAmount");
+let payNowButton = document.getElementById("payNow");
 
-// Create a map to store item counts
-let itemCounter = new Map();
+// Create an object to store item counts
+let itemCounter = {};
 
 // Function to remove an item from the purchased array
 function removeFromCheckout(itemName) {
@@ -15,16 +17,19 @@ function removeFromCheckout(itemName) {
 // Function to update the display after modifying the purchased array
 function checkOutItems() {
   // Count the occurrences of each item
-  itemCounter.clear();
+  itemCounter = {};
+  let totalCost = 0;
+
   purchased.forEach((item) => {
     const itemName = item.name;
-    itemCounter.set(itemName, (itemCounter.get(itemName) || 0) + 1);
+    itemCounter[itemName] = (itemCounter[itemName] || 0) + 1;
+    totalCost += item.price;
   });
 
   // Generate HTML with item information and counts
-  table.innerHTML = [...itemCounter.keys()].map((itemName) => {
+  table.innerHTML = Object.keys(itemCounter).map((itemName) => {
     const item = purchased.find((purchasedItem) => purchasedItem.name === itemName);
-    const count = itemCounter.get(itemName);
+    const count = itemCounter[itemName];
 
     return `
       <div class="productCard">
@@ -37,7 +42,24 @@ function checkOutItems() {
       </div>
     `;
   }).join('');
+
+  // Update the total amount in the HTML
+  totalAmountElement.innerText = `R${totalCost.toFixed(2)}`;
 }
+
+// Event listener for the "Pay Now" button
+payNowButton.addEventListener("click", handlePayment);
+
+// Function to handle the payment
+function handlePayment() {
+  localStorage.removeItem("purchased");
+  purchased = [];
+  totalAmountElement.textContent = "R0.00";
+  payNowButton.style.display = "none";
+  alert("Payment successful!");
+  checkOutItems(); // You can also call renderCheckoutItems() if that's the correct function
+}
+
 checkOutItems();
 
 function getCurrentYear() {
