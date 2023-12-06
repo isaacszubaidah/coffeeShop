@@ -100,7 +100,7 @@ footer span {
   width: 400px;
 }
 
-#loading{
+#loading {
   display: flex;
   justify-content: center;
   align-items: center˝;
@@ -115,26 +115,30 @@ footer span {
   animation: spin 2s linear infinite;
 }
 
-#pageContent{
+#pageContent {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-#cart{
-      
-      height: 20px;
-      display: flex;
-      justify-content: end;
-      align-items: end;
+#cart {
+  border: #f3f3f3;
+  height: 10px;
+  display: flex;
+  margin-top: 3%;
+  justify-content: end;
+  align-items: end;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
 
 @media screen and (max-width: 480px) {
   .productCard {

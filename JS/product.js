@@ -1,3 +1,4 @@
+let checkoutCounter = JSON.parse(localStorage.getItem("purchased")) || [];
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     document.getElementById("loading").style.display = "none";
@@ -5,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 1500);
 });
 let purchased = [];
+let checkoutCount = document.getElementById("checkoutCount");
+console.log("checkoutCounter", checkoutCounter.length);
 let main = document.querySelector("main");
 let items = JSON.parse(localStorage.getItem("items"));
 let searchButton = document.getElementById("searchButton");
@@ -17,21 +20,21 @@ let biscoffeeButton = document.getElementById("biscoffeeButton");
 let cafeButton = document.getElementById("cafeButton");
 let filterButton = document.getElementById("filterButton");
 let clearButton = document.getElementById("clearButton");
-
 //search function duurh
 function searchItems() {
-  const searchValue = searchInput.value.toLowerCase();//taking in the search value from the input
-  const currentItems = getCurrentItems();//applying active class
-  const filteredItems = currentItems.filter(  //search by name and type
+  const searchValue = searchInput.value.toLowerCase(); //taking in the search value from the input
+  const currentItems = getCurrentItems(); //applying active class
+  const filteredItems = currentItems.filter(
+    //search by name and type
     (item) =>
       item.name.toLowerCase().includes(searchValue) || //display/include everything or item
       item.type.toLowerCase().includes(searchValue)
   );
   itemsToShow(filteredItems);
 }
-
-searchInput.addEventListener("change", searchItems);//basically onchange
-searchButton.addEventListener("click", searchItems);//same as ontop
+checkoutCount.textContent = `${checkoutCounter.length}`
+searchInput.addEventListener("change", searchItems); //basically onchange
+searchButton.addEventListener("click", searchItems); //same as ontop
 
 const pastry = items.filter((item) => item.type.toLowerCase() === "pastry");
 const croissants = items.filter(
@@ -47,7 +50,6 @@ const filter = items.filter((item) => item.type.toLowerCase() === "filter");
 itemsToShow(items);
 
 function itemsToShow(items) {
-  
   main.innerHTML = items
     .map(function (item, index) {
       return `
@@ -57,14 +59,23 @@ function itemsToShow(items) {
           <p class="text">${item.description}</p>
           <p>R${item.price}</p>
           <button class="button text-white rounded-4 " value='${index}' data-add>Add To Cart</button>
-       </div>
-       `;
+          </div>
+          `;
     })
     .join("");
 }
 
 itemsToShow(items);
 
+function checkoutCounterRealtime() {
+  checkoutCount.textContent = `${checkoutCounter.length}`;
+  console.log('jhdgug')
+}
+function add(itemsArray, index) {
+  purchased.push(itemsArray[index]);
+  localStorage.setItem("purchased", JSON.stringify(purchased));
+  checkoutCounterRealtime();
+}
 main.addEventListener("click", function (event) {
   if (event.target.hasAttribute("data-add")) {
     const currentItems = getCurrentItems();
@@ -133,10 +144,6 @@ function deactivateAllButtons() {
   filterButton.classList.remove("active");
 }
 
-function add(itemsArray, index) {
-  purchased.push(itemsArray[index]);
-  localStorage.setItem("purchased", JSON.stringify(purchased));
-}
 
 function getCurrentYear() {
   const currentDate = new Date();
