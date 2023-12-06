@@ -126,9 +126,18 @@ footer span {
   border: #f3f3f3;
   height: 10px;
   display: flex;
+  position: relative;
   margin-top: 3%;
   justify-content: end;
   align-items: end;
+}
+
+#checkoutCount{
+  position: absolute;
+  top: -26px;
+  right: 0;
+  left: 24px;
+  color: #f3f3f3;
 }
 
 @keyframes spin {
