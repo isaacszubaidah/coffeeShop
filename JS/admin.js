@@ -14,35 +14,35 @@ function Constructor(id, name, description, price, url, type) {
 document
   .getElementById("submitButton")
   .addEventListener("click", addToLocalStorage);
-function addToLocalStorage() {
-  event.preventDefault();
-  let itemPrice = document.getElementById("itemPrice").value;
-  let itemName = document.getElementById("itemPrice").value;
-  let itemDescription = document.getElementById("itemPrice").value;
-  let itemUrl = document.getElementById("itemPrice").value;
-  let itemType = document.getElementById("itemPrice").value;
-  if (
-    isNaN(itemPrice) ||
-    !itemName ||
-    !itemDescription ||
-    !itemUrl ||
-    !itemType
-  ) {
-    alert("Please add in all values.");
-    return; //stops the execution of function
+  function addToLocalStorage(event) {
+    event.preventDefault();
+  
+    const itemPrice = document.getElementById("itemPrice").value;
+    const itemName = document.getElementById("itemName").value; 
+    const itemDescription = document.getElementById("itemDescription").value; 
+    const itemUrl = document.getElementById("itemUrl").value; 
+    const itemType = document.getElementById("itemType").value; 
+  
+    if (isNaN(itemPrice) || !itemName || !itemDescription || !itemUrl || !itemType) {
+      alert("Please add in all values.");
+      return;
+    }
+  
+    const objectConstruct = new Constructor(
+      items.length + 1,
+      itemName,
+      itemDescription,
+      itemPrice,
+      itemUrl,
+      itemType
+    );
+  
+    console.log("objectConstruct", objectConstruct);
+    items.push(objectConstruct);
+  
+    favourite();
+    anything();
   }
-  const objectConstruct = new Constructor(
-    items.length + 1,
-    itemName,
-    itemDescription,
-    itemPrice,
-    itemUrl,
-    itemType
-  );
-  console.log("objectConstruct", objectConstruct);
-  items.push(objectConstruct);
-  favourite();
-}
 
 //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
 let item1 = new Constructor(
