@@ -10,6 +10,35 @@ function Constructor(id, name, description, price, url, type) {
   this.url = url;
   this.type = type;
 }
+const sortSelect = document.getElementById("sortSelect"); // Added sorting dropdown
+console.log('sortSelect',sortSelect);
+sortSelect.addEventListener("change", function () {
+  const sortOrder = sortSelect.value;
+  sortItems(sortOrder);
+});
+
+function sortItems(order) {
+  console.log('order',order);
+  switch (order) {
+    case "nameAsc":
+      items.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "nameDesc":
+      items.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+      case "priceAsc":
+        items.sort((a, b) => a.price - b.price);
+        break;
+        case "priceDesc":
+          items.sort((a, b) => b.price - a.price);
+          break;
+          default:
+            
+            items.sort((a, b) => a.id - b.id);
+            break;
+          }
+  anything();
+}
 // //second item created using contructive
 document
   .getElementById("submitButton")
@@ -191,12 +220,3 @@ function favourite() {
 favourite();
 anything();
 
-table.style.backgroundColor = "#87ceeb";
-
-// function one(){
-
-// }
-// function two(callBack){
-//          callBack()
-// };
-// two(one())
