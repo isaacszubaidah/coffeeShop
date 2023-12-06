@@ -1,40 +1,129 @@
 //this is where all products will be stored
 let items = [];
-//object created manually
-//do not use this figure out another way
-//  let object1 = {
-//     id : 1,
-//      name :'name',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//you going to have an extra keyword called qauntity
-// };
-//this below is a factory function
-// function createObject(id,name,description,price,url){
-//     return{
-//     id:id,
-//      name:'Nike Dunk',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//     };
-
-// }
-// let object1 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object3 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object4 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
 
 //function to create objects
-function Constructor(id, name, description, price, url,type) {
-  (this.id = id),
-    (this.name = name),
-    (this.description = description),
-    (this.price = price),
-    (this.url = url);
-    (this.type = type);
+function Constructor(id, name, description, price, url, type) {
+  this.id = id;
+  this.name = name;
+  this.description = description;
+  this.price = price;
+  this.url = url;
+  this.type = type;
+}
+const sortSelect = document.getElementById("sortSelect"); // Added sorting dropdown
+console.log('sortSelect',sortSelect);
+sortSelect.addEventListener("change", function () {
+  const sortOrder = sortSelect.value;
+  sortItems(sortOrder);
+});
+
+function sortItems(order) {
+  console.log('order',order);
+  switch (order) {
+    case "nameAsc":
+      items.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "nameDesc":
+      items.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+      case "priceAsc":
+        items.sort((a, b) => a.price - b.price);
+        break;
+        case "priceDesc":
+          items.sort((a, b) => b.price - a.price);
+          break;
+          default:
+            
+            items.sort((a, b) => a.id - b.id);
+            break;
+          }
+  anything();
 }
 // //second item created using contructive
+document
+  .getElementById("submitButton")
+  .addEventListener("click", addToLocalStorage);
+  function addToLocalStorage(event) {
+    event.preventDefault();
+  
+    const itemPrice = document.getElementById("itemPrice").value;
+    const itemName = document.getElementById("itemName").value; 
+    const itemDescription = document.getElementById("itemDescription").value; 
+    const itemUrl = document.getElementById("itemUrl").value; 
+    const itemType = document.getElementById("itemType").value; 
+  
+    if (isNaN(itemPrice) || !itemName || !itemDescription || !itemUrl || !itemType) {
+      alert("Please add in all values.");
+      return;
+    }
+  
+    const objectConstruct = new Constructor(
+      items.length + 1,
+      itemName,
+      itemDescription,
+      itemPrice,
+      itemUrl,
+      itemType
+    );
+  
+    console.log("objectConstruct", objectConstruct);
+    items.push(objectConstruct);
+
+
+    document.getElementById("itemPrice").value = "";
+    document.getElementById("itemName").value = "";
+    document.getElementById("itemDescription").value = "";
+    document.getElementById("itemUrl").value = "";
+    document.getElementById("itemType").value = "";
+  
+    favourite();
+    anything();
+  }
+  function editItem(index) {
+    const modal = document.getElementById("staticBackdrop");
+    const editedNameInput = document.getElementById("editedName");
+    const editedDescriptionInput = document.getElementById("editedDescription");
+    const editedPriceInput = document.getElementById("editedPrice");
+    const editedUrlInput = document.getElementById("editedUrl");
+    const editedType = document.getElementById("editedType");
+    const saveButton = document.getElementById("saveEdit");
+  
+    editedNameInput.value = items[index].name;
+    editedDescriptionInput.value = items[index].description;
+    editedPriceInput.value = items[index].price;
+    editedUrlInput.value = items[index].url;
+    editedType.value = items[index].type;
+  
+    modal.style.display = "block";
+  
+    saveButton.onclick = function () {
+      const editedName = editedNameInput.value;
+      const editedDescription = editedDescriptionInput.value;
+      const editedPrice = parseFloat(editedPriceInput.value);
+      const editedUrl = editedUrlInput.value;
+      const editedTypes = editedType.value;
+  
+      if (
+        editedName &&
+        editedDescription &&
+        !isNaN(editedPrice) &&
+        editedUrl &&
+        editedType
+      ) {
+        items[index].name = editedName;
+        items[index].description = editedDescription;
+        items[index].price = editedPrice;
+        items[index].url = editedUrl;
+        items[index].type = editedTypes;
+  
+        favourite();
+        anything();
+        modal.style.display = "none";
+      } else {
+        alert("Invalid input. Editing canceled.");
+      }
+    };
+  }
 
 //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
 let item1 = new Constructor(
@@ -78,7 +167,7 @@ let item5 = new Constructor(
   "cafe"
 );
 let item6 = new Constructor(
-  5,
+  6,
   "Filter Coffee",
   "Better Beans, Better Coffee",
   50,
@@ -101,7 +190,7 @@ function anything() {
               <td>R${item.price}</td>
               <td>${item.description}</td>
               <td><img class src =${item.url}</td>
-              <td><button>Edit</button></td>
+              <button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button>
               <td><button class="delete" value= '${index}'>Delete</button></td>
 
            </tr>
@@ -131,12 +220,3 @@ function favourite() {
 favourite();
 anything();
 
-table.style.backgroundColor = "#87ceeb";
-
-// function one(){
-
-// }
-// function two(callBack){
-//          callBack()
-// };
-// two(one())
