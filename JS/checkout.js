@@ -1,5 +1,6 @@
 let purchased = JSON.parse(localStorage.getItem("purchased"));
 let table = document.querySelector("table");
+
 table.innerHTML = purchased.map((item, index) => {
   return `
     <tr>
