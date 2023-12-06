@@ -51,7 +51,7 @@ document
     anything();
   }
   function editItem(index) {
-    const modal = document.getElementById("editModal");
+    const modal = document.getElementById("staticBackdrop");
     const editedNameInput = document.getElementById("editedName");
     const editedDescriptionInput = document.getElementById("editedDescription");
     const editedPriceInput = document.getElementById("editedPrice");
@@ -87,8 +87,8 @@ document
         items[index].url = editedUrl;
         items[index].type = editedTypes;
   
-        updateTable();
-        saveToLocalStorage();
+        favourite();
+        anything();
         modal.style.display = "none";
       } else {
         alert("Invalid input. Editing canceled.");
@@ -161,7 +161,7 @@ function anything() {
               <td>R${item.price}</td>
               <td>${item.description}</td>
               <td><img class src =${item.url}</td>
-              <button class="editBtn" onclick="editItem(${index})">Edit</button>
+              <button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button>
               <td><button class="delete" value= '${index}'>Delete</button></td>
 
            </tr>
