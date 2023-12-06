@@ -1,13 +1,13 @@
-let checkoutCounter = JSON.parse(localStorage.getItem("purchased")) || [];
+
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     document.getElementById("loading").style.display = "none";
     document.getElementById("pageContent").style.display = "flex";
   }, 1500);
 });
-let purchased = [];
+let purchased =JSON.parse(localStorage.getItem("purchased")) || [];;
 let checkoutCount = document.getElementById("checkoutCount");
-console.log("checkoutCounter", checkoutCounter.length);
+
 let main = document.querySelector("main");
 let items = JSON.parse(localStorage.getItem("items"));
 let searchButton = document.getElementById("searchButton");
@@ -32,7 +32,7 @@ function searchItems() {
   );
   itemsToShow(filteredItems);
 }
-checkoutCount.textContent = `${checkoutCounter.length}`
+checkoutCount.textContent = `${purchased.length}`
 searchInput.addEventListener("change", searchItems); //basically onchange
 searchButton.addEventListener("click", searchItems); //same as ontop
 
@@ -68,9 +68,8 @@ function itemsToShow(items) {
 itemsToShow(items);
 
 function checkoutCounterRealtime() {
-  checkoutCount.textContent = `${checkoutCounter.length}`;
-  console.log('jhdgug')
-}
+  checkoutCount.textContent = `${purchased.length}`;
+} //this is the function I made for the items thats in the cart to show in realtime
 function add(itemsArray, index) {
   purchased.push(itemsArray[index]);
   localStorage.setItem("purchased", JSON.stringify(purchased));
