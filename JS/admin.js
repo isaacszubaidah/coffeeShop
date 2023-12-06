@@ -1,40 +1,48 @@
 //this is where all products will be stored
 let items = [];
-//object created manually
-//do not use this figure out another way
-//  let object1 = {
-//     id : 1,
-//      name :'name',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//you going to have an extra keyword called qauntity
-// };
-//this below is a factory function
-// function createObject(id,name,description,price,url){
-//     return{
-//     id:id,
-//      name:'Nike Dunk',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//     };
-
-// }
-// let object1 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object3 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object4 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
 
 //function to create objects
-function Constructor(id, name, description, price, url,type) {
-  (this.id = id),
-    (this.name = name),
-    (this.description = description),
-    (this.price = price),
-    (this.url = url);
-    (this.type = type);
+function Constructor(id, name, description, price, url, type) {
+  this.id = id;
+  this.name = name;
+  this.description = description;
+  this.price = price;
+  this.url = url;
+  this.type = type;
 }
 // //second item created using contructive
+document
+  .getElementById("submitButton")
+  .addEventListener("click", addToLocalStorage);
+function addToLocalStorage() {
+  event.preventDefault();
+  let itemPrice = document.getElementById("itemPrice").value;
+  let itemName = document.getElementById("itemPrice").value;
+  let itemDescription = document.getElementById("itemPrice").value;
+  let itemUrl = document.getElementById("itemPrice").value;
+  let itemType = document.getElementById("itemPrice").value;
+  if (
+    isNaN(itemPrice) ||
+    !itemName ||
+    !itemDescription ||
+    !itemUrl ||
+    !itemType
+  ) {
+    alert("Please add in all values.");
+    return; //stops the execution of function
+  }
+  const objectConstruct = new Constructor(
+    items.length + 1,
+    itemName,
+    itemDescription,
+    itemPrice,
+    itemUrl,
+    itemType
+  );
+  console.log("objectConstruct", objectConstruct);
+  items.push(objectConstruct);
+  favourite();
+}
 
 //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
 let item1 = new Constructor(
@@ -78,7 +86,7 @@ let item5 = new Constructor(
   "cafe"
 );
 let item6 = new Constructor(
-  5,
+  6,
   "Filter Coffee",
   "Better Beans, Better Coffee",
   50,
