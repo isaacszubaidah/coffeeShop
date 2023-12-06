@@ -122,6 +122,14 @@ footer span {
   flex-direction: column;
 }
 
+#cart{
+      
+      height: 20px;
+      display: flex;
+      justify-content: end;
+      align-items: end;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
