@@ -47,6 +47,7 @@ const filter = items.filter((item) => item.type.toLowerCase() === "filter");
 itemsToShow(items);
 
 function itemsToShow(items) {
+  
   main.innerHTML = items
     .map(function (item, index) {
       return `
