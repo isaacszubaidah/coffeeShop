@@ -155,15 +155,7 @@ footer span {
 }
 
 
-.formContact {
-  right: 65%;
-  bottom: 6%;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  padding: 7%;
-}
+
 
 input {
   background-color: #ecc186;
@@ -196,37 +188,16 @@ button {
   margin-top: 2%;
 }
 
-.headingContact {
-  font-family: 'Hammersmith One', sans-serif;
-  position: absolute;
-  left: 65%;
-  bottom: 65%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 400%;
-}
 
-.information {
-  font-family: "DM Serif Display", serif;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 20%;
-  color: white;
-  position: absolute;
-  left: 60%;
-  bottom: 25%;
-}
 
-.icons {
+/* .icons {
   position: absolute;
   width: 20px;
   left: 50%;
   bottom: 25%;
-}
+} */
 
-.email {
-  width: 50px;
-}
+
 
 
 @media screen and (min-width: 480px) {
@@ -307,5 +278,125 @@ button {
 
 .editFormInput {
   width: 100%;
+
+}
+
+
+.formContact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  gap: 14px;
+  padding-top: 60px;
+}
+
+/* .contactContainer {
+  background: pink;
+} */
+
+
+
+.contactContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.contactFormDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactInfoDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headingContact {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  font-size: 400%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.information {
+  font-family: "DM Serif Display", serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phoneIcon {
+  width: 40px;
+}
+
+.emailIcon {
+  width: 40px;
+}
+
+.locationIcon {
+  width: 40px;
+}
+
+.informationSpan {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 480px) {
+  .contactContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .formContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    gap: 14px;
+    padding-top: 60px;
+  }
+
+  .headingContact {
+    font-family: 'Hammersmith One', sans-serif;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 
 }
