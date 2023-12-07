@@ -100,7 +100,7 @@ footer span {
   width: 400px;
 }
 
-#loading{
+#loading {
   display: flex;
   justify-content: center;
   align-items: center˝;
@@ -115,18 +115,39 @@ footer span {
   animation: spin 2s linear infinite;
 }
 
-#pageContent{
+#pageContent {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+#cart {
+  border: #f3f3f3;
+  height: 10px;
+  display: flex;
+  position: relative;
+  margin-top: 3%;
+  justify-content: end;
+  align-items: end;
 }
 
+#checkoutCount{
+  position: absolute;
+  top: -26px;
+  right: 0;
+  left: 24px;
+  color: #f3f3f3;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 480px) {
   .productCard {

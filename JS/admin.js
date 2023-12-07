@@ -1,98 +1,249 @@
 //this is where all products will be stored
 let items = [];
-//object created manually
-//do not use this figure out another way
-//  let object1 = {
-//     id : 1,
-//      name :'name',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//you going to have an extra keyword called qauntity
-// };
-//this below is a factory function
-// function createObject(id,name,description,price,url){
-//     return{
-//     id:id,
-//      name:'Nike Dunk',
-//      description:'This is better than the original',
-//      price :150,
-//      url:'https://i.postimg.cc/3NXX7r0Q/100738621-800-800.png'
-//     };
-
-// }
-// let object1 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object3 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
-// let object4 = new createObject(2,'Nike Dunk','This is better than the fake',250,'https://i.postimg.cc/9QJBrf8W/99232071-800-800.png');
 
 //function to create objects
-function Constructor(id, name, description, price, url,type) {
-  (this.id = id),
-    (this.name = name),
-    (this.description = description),
-    (this.price = price),
-    (this.url = url);
-    (this.type = type);
+function Constructor(id, name, description, price, url, type) {
+  this.id = id;
+  this.name = name;
+  this.description = description;
+  this.price = price;
+  this.url = url;
+  this.type = type;
 }
+
+let itemsSavedInLocalStorage = JSON.parse(localStorage.getItem("items")) || [];
+
+function sortItems(option) {
+  switch (option) {
+    case "nameAsc":
+      itemsSavedInLocalStorage.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "nameDesc":
+      itemsSavedInLocalStorage.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "priceAsc":
+      itemsSavedInLocalStorage.sort((a, b) => a.price - b.price);
+      break;
+    case "priceDesc":
+      itemsSavedInLocalStorage.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      // Default sorting (by ID)
+      itemsSavedInLocalStorage.sort((a, b) => a.id - b.id);
+  }
+
+  // Refresh the table after sorting
+  anything();
+}
+
+// Add an event listener for the select element to trigger sorting
+document.getElementById("sortSelect").addEventListener("change", function () {
+  const selectedOption = this.value;
+  sortItems(selectedOption);
+});
+
 // //second item created using contructive
+document
+  .getElementById("submitButton")
+  .addEventListener("click", addToLocalStorage);
+function addToLocalStorage(event) {
+  event.preventDefault();
 
-//THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
-let item1 = new Constructor(
-  1,
-  "Pastry Catering",
-  "This is better than the fake",
-  15,
-  "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
-  "pastry"
-);
-let item2 = new Constructor(
-  2,
-  "Fresh Croissants",
-  "A little bliss in every bite",
-  15,
-  "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
-  "croissants"
-);
-let item3 = new Constructor(
-  3,
-  "Breakfast Bagel",
-  "I am a bagel with soul.",
-  50,
-  "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
-  "bagel"
-);
-let item4 = new Constructor(
-  4,
-  "Biscoffee",
-  "Iced Coffee with a side of Lotus Biscoff Desserts.",
-  75,
-  "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
-  "biscoffee"
-);
-let item5 = new Constructor(
-  5,
-  "Caffe Latte",
-  " Sip into a world of possibilities with our lattes",
-  45,
-  "https://i.postimg.cc/0jGtRBSk/download.jpg",
-  "cafe"
-);
-let item6 = new Constructor(
-  5,
-  "Filter Coffee",
-  "Better Beans, Better Coffee",
-  50,
-  "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
-  "filter"
-);
+  const itemPrice = document.getElementById("itemPrice").value;
+  const itemName = document.getElementById("itemName").value;
+  const itemDescription = document.getElementById("itemDescription").value;
+  const itemUrl = document.getElementById("itemUrl").value;
+  const itemType = document.getElementById("itemType").value;
 
-//pushing items into the array
-items.push(item1, item2, item3, item4, item5, item6);
-//set the array in local storage
+  if (isNaN(itemPrice) || !itemName || !itemDescription || !itemUrl || !itemType) {
+    alert("Please add in all values.");
+    return;
+  }
+
+  const objectConstruct = new Constructor(
+    items.length + 1,
+    itemName,
+    itemDescription,
+    itemPrice,
+    itemUrl,
+    itemType
+  );
+
+  console.log("objectConstruct", objectConstruct);
+  items.push(objectConstruct);
+
+
+  document.getElementById("itemPrice").value = "";
+  document.getElementById("itemName").value = "";
+  document.getElementById("itemDescription").value = "";
+  document.getElementById("itemUrl").value = "";
+  document.getElementById("itemType").value = "";
+
+  favourite();
+  anything();
+}
+function editItem(index) {
+  const modal = document.getElementById("staticBackdrop");
+  const editedNameInput = document.getElementById("editedName");
+  const editedDescriptionInput = document.getElementById("editedDescription");
+  const editedPriceInput = document.getElementById("editedPrice");
+  const editedUrlInput = document.getElementById("editedUrl");
+  const editedType = document.getElementById("editedType");
+  const saveButton = document.getElementById("saveEdit");
+
+  editedNameInput.value = items[index].name;
+  editedDescriptionInput.value = items[index].description;
+  editedPriceInput.value = items[index].price;
+  editedUrlInput.value =  items[index].url;
+  editedType.value = items[index].type;
+
+  modal.style.display = "block";
+
+  saveButton.onclick = function () {
+    const editedName = editedNameInput.value;
+    const editedDescription = editedDescriptionInput.value;
+    const editedPrice = parseFloat(editedPriceInput.value);
+    const editedUrl = editedUrlInput.value;
+    const editedTypes = editedType.value;
+
+    if (
+      editedName &&
+      editedDescription &&
+      !isNaN(editedPrice) &&
+      editedUrl &&
+      editedType
+    ) {
+      items[index].name = editedName;
+      items[index].description = editedDescription;
+      items[index].price = editedPrice;
+      items[index].url = editedUrl;
+      items[index].type = editedTypes;
+
+      favourite();
+      anything();
+      modal.style.display = "none";
+    } else {
+      alert("Invalid input. Editing canceled.");
+    }
+  };
+}
+
+if (itemsSavedInLocalStorage.length > 0) {
+  items = itemsSavedInLocalStorage;
+} else {
+  // add default items if local storage is empty
+  let item1 = new Constructor(
+    1,
+    "Pastry Catering",
+    "This is better than the fake",
+    15,
+    "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
+    "pastry"
+  );
+  let item2 = new Constructor(
+    2,
+    "Fresh Croissants",
+    "A little bliss in every bite",
+    15,
+    "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
+    "croissants"
+  );
+  let item3 = new Constructor(
+    3,
+    "Breakfast Bagel",
+    "I am a bagel with soul.",
+    50,
+    "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
+    "bagel"
+  );
+  let item4 = new Constructor(
+    4,
+    "Biscoffee",
+    "Iced Coffee with a side of Lotus Biscoff Desserts.",
+    75,
+    "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
+    "biscoffee"
+  );
+  let item5 = new Constructor(
+    5,
+    "Caffe Latte",
+    " Sip into a world of possibilities with our lattes",
+    45,
+    "https://i.postimg.cc/0jGtRBSk/download.jpg",
+    "cafe"
+  );
+  let item6 = new Constructor(
+    6,
+    "Filter Coffee",
+    "Better Beans, Better Coffee",
+    50,
+    "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
+    "filter"
+  );
+  // push default items into the array
+  items.push(item1, item2, /*...*/);
+  // set the array in local storage
+  localStorage.setItem("items", JSON.stringify(items));
+}
+
+
+// //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
+// let item1 = new Constructor(
+//   1,
+//   "Pastry Catering",
+//   "This is better than the fake",
+//   15,
+//   "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
+//   "pastry"
+// );
+// let item2 = new Constructor(
+//   2,
+//   "Fresh Croissants",
+//   "A little bliss in every bite",
+//   15,
+//   "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
+//   "croissants"
+// );
+// let item3 = new Constructor(
+//   3,
+//   "Breakfast Bagel",
+//   "I am a bagel with soul.",
+//   50,
+//   "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
+//   "bagel"
+// );
+// let item4 = new Constructor(
+//   4,
+//   "Biscoffee",
+//   "Iced Coffee with a side of Lotus Biscoff Desserts.",
+//   75,
+//   "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
+//   "biscoffee"
+// );
+// let item5 = new Constructor(
+//   5,
+//   "Caffe Latte",
+//   " Sip into a world of possibilities with our lattes",
+//   45,
+//   "https://i.postimg.cc/0jGtRBSk/download.jpg",
+//   "cafe"
+// );
+// let item6 = new Constructor(
+//   6,
+//   "Filter Coffee",
+//   "Better Beans, Better Coffee",
+//   50,
+//   "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
+//   "filter"
+// );
+
+// //pushing items into the array
+// items.push(item1, item2, item3, item4, item5, item6);
+// //set the array in local storage
 
 let table = document.querySelector("table");
 function anything() {
-  itemsSavedInLocalStorage = JSON.parse(localStorage.getItem("items"));
+
   let products = itemsSavedInLocalStorage.map(function (item, index) {
     return `
            <tr>
@@ -101,7 +252,7 @@ function anything() {
               <td>R${item.price}</td>
               <td>${item.description}</td>
               <td><img class src =${item.url}</td>
-              <td><button>Edit</button></td>
+              <button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button>
               <td><button class="delete" value= '${index}'>Delete</button></td>
 
            </tr>
@@ -131,12 +282,19 @@ function favourite() {
 favourite();
 anything();
 
-table.style.backgroundColor = "#87ceeb";
 
-// function one(){
 
-// }
-// function two(callBack){
-//          callBack()
-// };
-// two(one())
+
+
+
+
+
+
+
+
+
+
+
+
+
+

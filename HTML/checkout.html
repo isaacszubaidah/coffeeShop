@@ -10,8 +10,8 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="/CSS/checkout.css">
 </head>
-<body>
-    <div class="bodyCheckout">
+<body class="bodyCheckout vh-100">
+    <div>
         <header>
           <nav class="navbar navbar-expand-lg bg-body-transparent">
             <div class="container-fluid">
@@ -37,7 +37,11 @@
                     <a class="nav-link active" aria-current="page" href="/HTML/checkout.html">Checkout</a>
                   </li>
                   <li class="nav-item">
+
                     <a class="nav-link active" href="/HTML/admin.htm/">Admin</a>
+
+                    <a class="nav-link active" href="/HTML/admin.html">Admin</a>
+
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/HTML/contact.html">Contact</a>
@@ -53,7 +57,7 @@
         Total Amount : <span id="totalAmount">R0.00</span>
         <button id="payNow">Pay Now</button>
       </div>
-    <footer>
+    <footer class="fixed-bottom">
         <div class="footerTag">
             <span>Espresso Yourself</span>
             <span id="currentYear"></span>
