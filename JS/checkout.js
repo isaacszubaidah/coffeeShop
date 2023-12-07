@@ -1,5 +1,5 @@
 let purchased = JSON.parse(localStorage.getItem("purchased"));
-let table = document.querySelector("main");
+let table = document.querySelector("table");
 let totalAmountElement = document.getElementById("totalAmount");
 let payNowButton = document.getElementById("payNow");
 
@@ -30,18 +30,20 @@ function checkOutItems() {
   table.innerHTML = Object.keys(itemCounter).map((itemName) => {
     const item = purchased.find((purchasedItem) => purchasedItem.name === itemName);
     const count = itemCounter[itemName];
-
     const totalPriceForItem = item.price * count;
 
+    // <img class="photo width-25 rounded-2 border p-3" src=${item.url}>
     return `
-    <div class="productCard">
-    <img class="photo width-25 rounded-2 border p-3" src=${item.url}>
-    <h3 class="itemName">${itemName}</h3>
-    <p class="text">${item.description}</p>
-    <p>Count: ${count}</p>
-    <p> R${totalPriceForItem.toFixed(2)}</p>
-    <button class="checkoutRemoveBtn" onclick="removeFromCheckout('${itemName}')">Remove</button>
-  </div>
+        <tr class="">
+          <td><img class="itemUrl " src="${item.url}"</td>
+          <td  class=" col-2">${itemName}</td>
+          <td class="text col-2">${item.description}</td>
+          <td class="col-2">Count: ${count}</td>
+          <td class="col-2"> R${totalPriceForItem.toFixed(2)}</td>
+          <td class="col-1">
+          <button class="checkoutRemoveBtn" onclick="removeFromCheckout('${itemName}')">Remove</button>
+          </td>
+        </tr>
     `;
   }).join('');
 
@@ -58,16 +60,31 @@ function handlePayment() {
   purchased = [];
   totalAmountElement.textContent = "R0.00";
   payNowButton.style.display = "none";
-  alert("Payment successful!");
+  // alert("Payment successful!");
+  document.getElementById("customAlertModal").style.display = "block";
   checkOutItems(); // You can also call renderCheckoutItems() if that's the correct function
 }
 
 checkOutItems();
 
+let closeModalPaymentBtn = document.getElementById("closeModalPaymentBtn")
+
+let closeModalPayment = closeModalPaymentBtn.addEventListener("click", closeCustomAlertModal);
+
+function closeCustomAlertModal() {
+  document.getElementById("customAlertModal").style.display = "none";
+}
+
+
+
 function getCurrentYear() {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  document.getElementById("currentYear").innerText = currentYear;
+  try {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    document.getElementById("currentYear").innerText = currentYear;
+  } catch (error) {
+    alert("Error during getCurrentYear:", error);
+  }
 }
 
 // Call the function to set the current year when the page loads

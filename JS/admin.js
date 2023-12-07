@@ -183,71 +183,58 @@ if (itemsSavedInLocalStorage.length > 0) {
     "filter"
   );
   // push default items into the array
-  items.push(item1, item2, /*...*/);
+  items.push(item1, item2, item3, item4, item5, item6);
   // set the array in local storage
-  localStorage.setItem("items", JSON.stringify(items));
+  setArrayItems()
 }
 
 
 let table = document.querySelector("table");
+
 function storeItems() {
-
   let headerRow = `
-  <tr>
-    <th scope="col">Product Image</th>
-    <th scope="col">Product ID</th>
-    <th scope="col">Product Name</th>
-    <th scope="col">Product Price</th>
-    <th scope="col">Product Description</th>
-    <th scope="col">Edit Product</th>
-    <th scope="col">Delete Product</th>
-  </tr>
-`;
-
-  let products = itemsSavedInLocalStorage.map(function (item, index) {
-    return `
-    <tr class="adminTable col-12">
-      <td><img class="itemUrl col-1" src="${item.url}"</td>
-      <td class="col-2">${item.id}</td>
-      <td class="col-2">${item.name}</td>
-      <td class="col-2">R${item.price}</td>
-      <td class="col-2">${item.description}</td>
-      <td class="col-1"><button class="editBtn" onclick="editItem(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
-      <td class="col-1"><button class="delete" value='${index}'>Delete</button></td>
+    <tr>
+      <th scope="col">Product Image</th>
+      <th scope="col">Product ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Product Description</th>
+      <th scope="col">Edit Product</th>
+      <th scope="col">Delete Product</th>
     </tr>
   `;
+
+  let products = items.map(function (item, index) {
+    return `
+      <tr class="adminTable col-12">
+        <td><img class="itemUrl col-1" src="${item.url}"</td>
+        <td class="col-2">${item.id}</td>
+        <td class="col-2">${item.name}</td>
+        <td class="col-2">R${item.price}</td>
+        <td class="col-2">${item.description}</td>
+        <td class="col-1"><button class="editBtn" onclick="editItem(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
+        <td class="col-1"><button class="delete" value='${index}'>Delete</button></td>
+      </tr>
+    `;
   });
 
-  // let products = itemsSavedInLocalStorage.map(function (item, index) {
-  //   return `
-  //         <tr class="adminTable col-12">
-  //         <td><img class="w-25 col-2" src="${item.url}"</td>
-  //         <td class="col-2">${item.id}</td>
-  //         <td class="col-2">${item.name}</td>
-  //         <td class="col-2">R${item.price}</td>
-  //         <td class="col-2">${item.description}</td>
-  //         <td class="col-1"><button class="editBtn" onclick="editItem(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
-  //         <td class="col-1"><button class="delete" value='${index}'>Delete</button></td>
-  //       </tr>
-  //       `;
-  // });
-
-  // this function removes only the first item
-  function remove(position) {
-    items.splice(position, 1);
-    setArrayItems();
-    storeItems();
-  }
-
-  //this is the delete button
-  let deleteButton = document.querySelector(".delete");
-  table.addEventListener("click", function () {
-    if (event.target.classList.contains("delete")) {
-      remove(event.target.value);
-    }
-  });
-  // table.innerHTML = products.join("");
   table.innerHTML = headerRow + products.join("");
+
+  let deleteButtons = document.querySelectorAll(".delete");
+  deleteButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      remove(button.value);
+    });
+  });
+}
+
+
+// this function removes only the first item
+function remove(position) {
+  console.log("🚀 ~ file: admin.js:238 ~ remove ~ position:", position)
+  items.splice(position, 1);
+  setArrayItems();
+  storeItems();
 }
 
 function setArrayItems() {
@@ -260,9 +247,13 @@ storeItems();
 
 
 function getCurrentYear() {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  document.getElementById("currentYear").innerText = currentYear;
+  try {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    document.getElementById("currentYear").innerText = currentYear;
+  } catch (error) {
+    console.error("Error during getCurrentYear:", error);
+  }
 }
 
 // Call the function to set the current year when the page loads
