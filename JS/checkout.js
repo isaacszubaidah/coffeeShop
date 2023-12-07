@@ -30,18 +30,17 @@ function checkOutItems() {
   table.innerHTML = Object.keys(itemCounter).map((itemName) => {
     const item = purchased.find((purchasedItem) => purchasedItem.name === itemName);
     const count = itemCounter[itemName];
-
     const totalPriceForItem = item.price * count;
 
     return `
-    <div class="productCard">
-    <img class="photo width-25 rounded-2 border p-3" src=${item.url}>
-    <h3 class="itemName">${itemName}</h3>
-    <p class="text">${item.description}</p>
-    <p>Count: ${count}</p>
-    <p> R${totalPriceForItem.toFixed(2)}</p>
-    <button class="checkoutRemoveBtn" onclick="removeFromCheckout('${itemName}')">Remove</button>
-  </div>
+        <div class="productCard">
+          <img class="photo width-25 rounded-2 border p-3" src=${item.url}>
+          <h3 class="itemName">${itemName}</h3>
+          <p class="text">${item.description}</p>
+          <p>Count: ${count}</p>
+          <p> R${totalPriceForItem.toFixed(2)}</p>
+          <button class="checkoutRemoveBtn" onclick="removeFromCheckout('${itemName}')">Remove</button>
+        </div>
     `;
   }).join('');
 
@@ -65,9 +64,13 @@ function handlePayment() {
 checkOutItems();
 
 function getCurrentYear() {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  document.getElementById("currentYear").innerText = currentYear;
+  try {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    document.getElementById("currentYear").innerText = currentYear;
+  } catch (error) {
+    alert("Error during getCurrentYear:", error);
+  }
 }
 
 // Call the function to set the current year when the page loads
