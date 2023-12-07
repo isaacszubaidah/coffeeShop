@@ -94,7 +94,7 @@ function editItem(index) {
   editedNameInput.value = items[index].name;
   editedDescriptionInput.value = items[index].description;
   editedPriceInput.value = items[index].price;
-  editedUrlInput.value = items[index].url;
+  editedUrlInput.value =  items[index].url;
   editedType.value = items[index].type;
 
   modal.style.display = "block";
