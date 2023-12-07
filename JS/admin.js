@@ -194,14 +194,14 @@ function storeItems() {
 
   let products = itemsSavedInLocalStorage.map(function (item, index) {
     return `
-           <tr>
-           <td><img class src =${item.url}</td>
-              <td>${item.id}</td>
-              <td>${item.name}</td>
-              <td>R${item.price}</td>
-              <td>${item.description}</td>
-              <button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button>
-              <td><button class="delete" value= '${index}'>Delete</button></td>
+           <tr class=" adminTable col-12">
+           <td><img class="w-25 col-2" src =${item.url}</td>
+           <td class="col-2">${item.id}</td>
+           <td class ="col-2">${item.name}</td>
+           <td class="col-2">R${item.price}</td>
+           <td class ="col-2>${item.description}</td>
+           <td class="col-1"><button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
+           <td class= "col-1"><button class="delete" value= '${index}'>Delete</button></td>
 
            </tr>
         `;
