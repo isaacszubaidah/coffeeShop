@@ -38,7 +38,7 @@ function checkOutItems() {
         <p class="text">${item.description}</p>
         <p>R${item.price}</p>
         <p>Count: ${count}</p>
-        <button onclick="removeFromCheckout('${itemName}')">Remove</button>
+        <button class="checkoutRemoveBtn" onclick="removeFromCheckout('${itemName}')">Remove</button>
       </div>
     `;
   }).join('');
