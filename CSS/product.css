@@ -134,10 +134,11 @@ footer span {
 
 #checkoutCount{
   position: absolute;
-  top: -26px;
+  top: -23px;
   right: 0;
-  left: 24px;
+  left: 21px;
   color: #f3f3f3;
+  font-weight: 600;
 }
 
 @keyframes spin {
@@ -158,4 +159,8 @@ footer span {
     justify-content: center;
     align-items: center;
   }
+}
+
+.checkoutImage{
+  width: 50px;
 }
