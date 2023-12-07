@@ -59,7 +59,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <form id="itemAddForm">
@@ -85,32 +85,36 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <div class="formFields">
                   <label for="editedName">Name:</label>
-                  <input type="text" id="editedName" required />
+                  <input type="text" id="editedName" class="editFormInput"  required />
                 </div>
 
                 <div class="formFields">
                   <label for="editedDescription">Description:</label>
-                  <input type="text" id="editedDescription" required />
+                  <input type="text" class="editFormInput"  id="editedDescription" required />
                 </div>
                 <div class="formFields">
                   <label for="editedPrice">Price:</label>
-                  <input type="number" id="editedPrice" required />
+                  <input type="number" class="editFormInput" id="editedPrice" required />
                 </div>
 
                 <div class="formFields">
                   <label for="editedUrl">Image URL:</label>
-                  <input type="text" id="editedUrl" required />
+                  <input type="text" class="editFormInput"  id="editedUrl" required />
                 </div>
 
                 <div class="formFields">
                   <label for="editedType">Type:</label>
-                  <input type="text" id="editedType" required />
+                  <input type="text" class="editFormInput"  id="editedType" required />
                 </div>
-
-                <button id="saveEdit" data-bs-dismiss="modal">Save</button>
+                <div class="modal-footer">
+                  <button id="saveEdit" data-bs-dismiss="modal">Save</button>
+                </div>
               </div>
             </div>
           </div>

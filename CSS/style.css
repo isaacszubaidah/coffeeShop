@@ -290,3 +290,22 @@ button {
   width: 100px !important;
   height: 100px !important;
 }
+
+.formFields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#saveEdit {
+  width: 100%;
+}
+
+.editFormInput {
+  width: 100%;
+
+}
