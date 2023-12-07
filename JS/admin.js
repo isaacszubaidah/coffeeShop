@@ -190,36 +190,34 @@ if (itemsSavedInLocalStorage.length > 0) {
 
 
 let table = document.querySelector("table");
+
 function storeItems() {
-
   let headerRow = `
-  <tr>
-    <th scope="col">Product Image</th>
-    <th scope="col">Product ID</th>
-    <th scope="col">Product Name</th>
-    <th scope="col">Product Price</th>
-    <th scope="col">Product Description</th>
-    <th scope="col">Edit Product</th>
-    <th scope="col">Delete Product</th>
-  </tr>
-`;
-
-  let products = itemsSavedInLocalStorage.map(function (item, index) {
-    return `
-    <tr class="adminTable col-12">
-      <td><img class="itemUrl col-1" src="${item.url}"</td>
-      <td class="col-2">${item.id}</td>
-      <td class="col-2">${item.name}</td>
-      <td class="col-2">R${item.price}</td>
-      <td class="col-2">${item.description}</td>
-      <td class="col-1"><button class="editBtn" onclick="editItem(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
-      <td class="col-1"><button class="delete" value='${index}'>Delete</button></td>
+    <tr>
+      <th scope="col">Product Image</th>
+      <th scope="col">Product ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Product Description</th>
+      <th scope="col">Edit Product</th>
+      <th scope="col">Delete Product</th>
     </tr>
   `;
+
+  let products = items.map(function (item, index) {
+    return `
+      <tr class="adminTable col-12">
+        <td><img class="itemUrl col-1" src="${item.url}"</td>
+        <td class="col-2">${item.id}</td>
+        <td class="col-2">${item.name}</td>
+        <td class="col-2">R${item.price}</td>
+        <td class="col-2">${item.description}</td>
+        <td class="col-1"><button class="editBtn" onclick="editItem(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button></td>
+        <td class="col-1"><button class="delete" value='${index}'>Delete</button></td>
+      </tr>
+    `;
   });
 
-
-  // table.innerHTML = products.join("");
   table.innerHTML = headerRow + products.join("");
 
   let deleteButtons = document.querySelectorAll(".delete");
@@ -229,6 +227,7 @@ function storeItems() {
     });
   });
 }
+
 
 // this function removes only the first item
 function remove(position) {
