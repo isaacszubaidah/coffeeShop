@@ -11,7 +11,7 @@ function Constructor(id, name, description, price, url, type) {
   this.type = type;
 }
 
-itemsSavedInLocalStorage = JSON.parse(localStorage.getItem("items"));
+let itemsSavedInLocalStorage = JSON.parse(localStorage.getItem("items")) || [];
 
 function sortItems(option) {
   switch (option) {
@@ -128,63 +128,122 @@ function editItem(index) {
   };
 }
 
-//THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
-let item1 = new Constructor(
-  1,
-  "Pastry Catering",
-  "This is better than the fake",
-  15,
-  "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
-  "pastry"
-);
-let item2 = new Constructor(
-  2,
-  "Fresh Croissants",
-  "A little bliss in every bite",
-  15,
-  "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
-  "croissants"
-);
-let item3 = new Constructor(
-  3,
-  "Breakfast Bagel",
-  "I am a bagel with soul.",
-  50,
-  "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
-  "bagel"
-);
-let item4 = new Constructor(
-  4,
-  "Biscoffee",
-  "Iced Coffee with a side of Lotus Biscoff Desserts.",
-  75,
-  "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
-  "biscoffee"
-);
-let item5 = new Constructor(
-  5,
-  "Caffe Latte",
-  " Sip into a world of possibilities with our lattes",
-  45,
-  "https://i.postimg.cc/0jGtRBSk/download.jpg",
-  "cafe"
-);
-let item6 = new Constructor(
-  6,
-  "Filter Coffee",
-  "Better Beans, Better Coffee",
-  50,
-  "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
-  "filter"
-);
+if (itemsSavedInLocalStorage.length > 0) {
+  items = itemsSavedInLocalStorage;
+} else {
+  // add default items if local storage is empty
+  let item1 = new Constructor(
+    1,
+    "Pastry Catering",
+    "This is better than the fake",
+    15,
+    "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
+    "pastry"
+  );
+  let item2 = new Constructor(
+    2,
+    "Fresh Croissants",
+    "A little bliss in every bite",
+    15,
+    "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
+    "croissants"
+  );
+  let item3 = new Constructor(
+    3,
+    "Breakfast Bagel",
+    "I am a bagel with soul.",
+    50,
+    "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
+    "bagel"
+  );
+  let item4 = new Constructor(
+    4,
+    "Biscoffee",
+    "Iced Coffee with a side of Lotus Biscoff Desserts.",
+    75,
+    "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
+    "biscoffee"
+  );
+  let item5 = new Constructor(
+    5,
+    "Caffe Latte",
+    " Sip into a world of possibilities with our lattes",
+    45,
+    "https://i.postimg.cc/0jGtRBSk/download.jpg",
+    "cafe"
+  );
+  let item6 = new Constructor(
+    6,
+    "Filter Coffee",
+    "Better Beans, Better Coffee",
+    50,
+    "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
+    "filter"
+  );
+  // push default items into the array
+  items.push(item1, item2, /*...*/);
+  // set the array in local storage
+  localStorage.setItem("items", JSON.stringify(items));
+}
 
-//pushing items into the array
-items.push(item1, item2, item3, item4, item5, item6);
-//set the array in local storage
+
+// //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
+// let item1 = new Constructor(
+//   1,
+//   "Pastry Catering",
+//   "This is better than the fake",
+//   15,
+//   "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
+//   "pastry"
+// );
+// let item2 = new Constructor(
+//   2,
+//   "Fresh Croissants",
+//   "A little bliss in every bite",
+//   15,
+//   "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
+//   "croissants"
+// );
+// let item3 = new Constructor(
+//   3,
+//   "Breakfast Bagel",
+//   "I am a bagel with soul.",
+//   50,
+//   "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
+//   "bagel"
+// );
+// let item4 = new Constructor(
+//   4,
+//   "Biscoffee",
+//   "Iced Coffee with a side of Lotus Biscoff Desserts.",
+//   75,
+//   "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
+//   "biscoffee"
+// );
+// let item5 = new Constructor(
+//   5,
+//   "Caffe Latte",
+//   " Sip into a world of possibilities with our lattes",
+//   45,
+//   "https://i.postimg.cc/0jGtRBSk/download.jpg",
+//   "cafe"
+// );
+// let item6 = new Constructor(
+//   6,
+//   "Filter Coffee",
+//   "Better Beans, Better Coffee",
+//   50,
+//   "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
+//   "filter"
+// );
+
+// //pushing items into the array
+// items.push(item1, item2, item3, item4, item5, item6);
+// //set the array in local storage
 
 let table = document.querySelector("table");
 function anything() {
-  
+
   let products = itemsSavedInLocalStorage.map(function (item, index) {
     return `
            <tr>
@@ -222,6 +281,17 @@ function favourite() {
 
 favourite();
 anything();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
