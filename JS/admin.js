@@ -11,6 +11,7 @@ function Constructor(id, name, description, price, url, type) {
   this.type = type;
 }
 
+// this the function to sort the products in all the sorts I have
 let itemsSavedInLocalStorage = JSON.parse(localStorage.getItem("items")) || [];
 
 function sortItems(option) {
@@ -33,7 +34,7 @@ function sortItems(option) {
   }
 
   // Refresh the table after sorting
-  anything();
+  storeItems();
 }
 
 // Add an event listener for the select element to trigger sorting
@@ -79,9 +80,10 @@ function addToLocalStorage(event) {
   document.getElementById("itemUrl").value = "";
   document.getElementById("itemType").value = "";
 
-  favourite();
-  anything();
+  setArrayItems();
+  storeItems();
 }
+// this function edits the products on the page
 function editItem(index) {
   const modal = document.getElementById("staticBackdrop");
   const editedNameInput = document.getElementById("editedName");
@@ -119,8 +121,8 @@ function editItem(index) {
       items[index].url = editedUrl;
       items[index].type = editedTypes;
 
-      favourite();
-      anything();
+      setArrayItems();
+      storeItems();
       modal.style.display = "none";
     } else {
       alert("Invalid input. Editing canceled.");
@@ -187,71 +189,17 @@ if (itemsSavedInLocalStorage.length > 0) {
 }
 
 
-// //THESE NEED TO BE CREATED VIA NEW FUCNCTION AND A FORM!!!
-// let item1 = new Constructor(
-//   1,
-//   "Pastry Catering",
-//   "This is better than the fake",
-//   15,
-//   "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
-//   "pastry"
-// );
-// let item2 = new Constructor(
-//   2,
-//   "Fresh Croissants",
-//   "A little bliss in every bite",
-//   15,
-//   "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
-//   "croissants"
-// );
-// let item3 = new Constructor(
-//   3,
-//   "Breakfast Bagel",
-//   "I am a bagel with soul.",
-//   50,
-//   "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
-//   "bagel"
-// );
-// let item4 = new Constructor(
-//   4,
-//   "Biscoffee",
-//   "Iced Coffee with a side of Lotus Biscoff Desserts.",
-//   75,
-//   "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
-//   "biscoffee"
-// );
-// let item5 = new Constructor(
-//   5,
-//   "Caffe Latte",
-//   " Sip into a world of possibilities with our lattes",
-//   45,
-//   "https://i.postimg.cc/0jGtRBSk/download.jpg",
-//   "cafe"
-// );
-// let item6 = new Constructor(
-//   6,
-//   "Filter Coffee",
-//   "Better Beans, Better Coffee",
-//   50,
-//   "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
-//   "filter"
-// );
-
-// //pushing items into the array
-// items.push(item1, item2, item3, item4, item5, item6);
-// //set the array in local storage
-
 let table = document.querySelector("table");
-function anything() {
+function storeItems() {
 
   let products = itemsSavedInLocalStorage.map(function (item, index) {
     return `
            <tr>
+           <td><img class src =${item.url}</td>
               <td>${item.id}</td>
               <td>${item.name}</td>
               <td>R${item.price}</td>
               <td>${item.description}</td>
-              <td><img class src =${item.url}</td>
               <button class="editBtn" onclick="editItem(${index}) " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Edit</button>
               <td><button class="delete" value= '${index}'>Delete</button></td>
 
@@ -259,12 +207,14 @@ function anything() {
         `;
   });
 
+   // this function removes only the first item
   function remove(position) {
     items.splice(position, 1);
-    favourite();
-    anything();
+    setArrayItems();
+    storeItems();
   }
-
+   
+  //this is the delete button
   let deleteButton = document.querySelector(".delete");
   table.addEventListener("click", function () {
     if (event.target.classList.contains("delete")) {
@@ -274,13 +224,13 @@ function anything() {
   table.innerHTML = products.join("");
 }
 
-function favourite() {
+function setArrayItems() {
   localStorage.setItem("items", JSON.stringify(items));
   //sets the array from local storage array(items)in code
 }
 
-favourite();
-anything();
+setArrayItems();
+storeItems();
 
 
 
