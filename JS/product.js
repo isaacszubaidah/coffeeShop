@@ -1,15 +1,27 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("pageContent").style.display = "flex";
-  }, 1500);
+  try {
+    setTimeout(function () {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("pageContent").style.display = "flex";
+    }, 1500);
+  } catch (error) {
+    alert("Error during DOMContentLoaded:", error);
+  }
 });
-let purchased = JSON.parse(localStorage.getItem("purchased")) || [];;
+try {
+  purchased = JSON.parse(localStorage.getItem("purchased")) || [];
+} catch (error) {
+  alert("Error parsing purchased from localStorage:", error);
+}
 let checkoutCount = document.getElementById("checkoutCount");
 
 let main = document.querySelector("main");
-let items = JSON.parse(localStorage.getItem("items"));
+try {
+  items = JSON.parse(localStorage.getItem("items")) || [];
+} catch (error) {
+  alert("Error parsing items from localStorage:", error);
+}
+
 let searchButton = document.getElementById("searchButton");
 let searchInput = document.getElementById("searchInput");
 
@@ -22,15 +34,18 @@ let filterButton = document.getElementById("filterButton");
 let clearButton = document.getElementById("clearButton");
 //search function duurh
 function searchItems() {
-  const searchValue = searchInput.value.toLowerCase(); //taking in the search value from the input
-  const currentItems = getCurrentItems(); //applying active class
-  const filteredItems = currentItems.filter(
-    //search by name and type
-    (item) =>
-      item.name.toLowerCase().includes(searchValue) || //display/include everything or item
-      item.type.toLowerCase().includes(searchValue)
-  );
-  itemsToShow(filteredItems);
+  try {
+    const searchValue = searchInput.value.toLowerCase();
+    const currentItems = getCurrentItems();
+    const filteredItems = currentItems.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchValue) ||
+        item.type.toLowerCase().includes(searchValue)
+    );
+    itemsToShow(filteredItems);
+  } catch (error) {
+    alert("Error during searchItems:", error);
+  }
 }
 checkoutCount.textContent = `${purchased.length}`
 searchInput.addEventListener("change", searchItems); //basically onchange
@@ -50,19 +65,22 @@ const filter = items.filter((item) => item.type.toLowerCase() === "filter");
 itemsToShow(items);
 
 function itemsToShow(items) {
-  main.innerHTML = items
-    .map(function (item, index) {
-      return `
-       <div class="productCard">
-          <img class="photo width-25 rounded-2 border p-4 bg-white" src=${item.url}>
-          <h2 class="itemName">${item.name}</h2>
-          <p class="text">${item.description}</p>
-          <p>R${item.price}</p>
-          <button class="button text-white rounded-4 " value='${index}' data-add>Add To Cart</button>
-          </div>
-          `;
-    })
-    .join("");
+  try {
+    main.innerHTML = items
+      .map(function (item, index) {
+        return `
+         <div class="productCard">
+            <img class="photo width-25 rounded-2 border p-4 bg-white" src=${item.url}>
+            <h2 class="itemName">${item.name}</h2>
+            <p class="text">${item.description}</p>
+            <p>R${item.price}</p>
+            <button class="button text-white rounded-4 " value='${index}' data-add>Add To Cart</button>
+         </div>`;
+      })
+      .join("");
+  } catch (error) {
+    alert("Error during itemsToShow:", error);
+  }
 }
 
 itemsToShow(items);
@@ -82,23 +100,30 @@ main.addEventListener("click", function (event) {
   }
 });
 
+
+
 function getCurrentItems() {
-  if (pastryButton.classList.contains("active")) {
-    return pastry;
-  } else if (croissantsButton.classList.contains("active")) {
-    return croissants;
-  } else if (bagelButton.classList.contains("active")) {
-    return bagel;
-  } else if (biscoffeeButton.classList.contains("active")) {
-    return biscoffee;
-  } else if (cafeButton.classList.contains("active")) {
-    return cafe;
-  } else if (filterButton.classList.contains("active")) {
-    return filter;
-  } else {
-    return items;
+  try {
+    if (pastryButton.classList.contains("active")) {
+      return pastry;
+    } else if (croissantsButton.classList.contains("active")) {
+      return croissants;
+    } else if (bagelButton.classList.contains("active")) {
+      return bagel;
+    } else if (biscoffeeButton.classList.contains("active")) {
+      return biscoffee;
+    } else if (cafeButton.classList.contains("active")) {
+      return cafe;
+    } else if (filterButton.classList.contains("active")) {
+      return filter;
+    } else {
+      return items;
+    }
+  } catch (error) {
+    alert("Error during getCurrentItems:", error);
   }
 }
+
 
 pastryButton.addEventListener("click", function () {
   itemsToShow(pastry);
@@ -145,9 +170,13 @@ function deactivateAllButtons() {
 
 
 function getCurrentYear() {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  document.getElementById("currentYear").innerText = currentYear;
+  try {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    document.getElementById("currentYear").innerText = currentYear;
+  } catch (error) {
+    alert("Error during getCurrentYear:", error);
+  }
 }
 
 // Call the function to set the current year when the page loads
