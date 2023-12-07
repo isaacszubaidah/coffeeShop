@@ -84,6 +84,7 @@ footer span {
   margin-right: auto !important;
   margin-left: auto !important;
 }
+
 #itemAddForm {
   display: flex;
   justify-content: center;
@@ -103,6 +104,7 @@ footer span {
   width: 100%;
   margin-top: 10px;
 }
+
 #bodyAdmin {
   background-color: #ba996c;
 }
@@ -143,6 +145,7 @@ footer span {
     padding-top: 20%;
   }
 }
+
 .bodyContact {
   background-image: url(https://i.postimg.cc/gJhPJtX5/Espresso-Yourself-5.png);
   background-repeat: no-repeat;
@@ -152,15 +155,7 @@ footer span {
 }
 
 
-.formContact {
-  right: 65%;
-  bottom: 6%;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  padding: 7%;
-}
+
 
 input {
   background-color: #ecc186;
@@ -169,12 +164,14 @@ input {
   margin-top: 4%;
   border-radius: 10px;
 }
+
 .textArea {
-  background-color:#ecc186;
+  background-color: #ecc186;
   width: 400px;
   height: 90px;
   border-radius: 10px;
 }
+
 button {
   background-color: #4e2116;
   color: #fff4f0;
@@ -182,45 +179,224 @@ button {
   width: 100px;
   height: 35px;
 }
-::placeholder{
-    color: #fff4f0;
-    text-align: center;
-    font-size: 18px;
-    font-family: "DM Serif Display", serif;
-    margin-top: 2%;
+
+::placeholder {
+  color: #fff4f0;
+  text-align: center;
+  font-size: 18px;
+  font-family: "DM Serif Display", serif;
+  margin-top: 2%;
 }
-.headingContact{
-    font-family: 'Hammersmith One', sans-serif;
-    position: absolute;
-    left: 65%;
-    bottom: 65%;
-    transform: translate(-50%, -50%);
-    color:white;
-    font-size: 400%;
-}
-.information{
-    font-family: "DM Serif Display", serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 20%;
-    color:white;
-    position: absolute;
-    left: 60%;
-    bottom: 25%;
-}
-.icons{
-    position: absolute;
-    width: 20px;
-    left: 50%;
-    bottom: 25%;
-}
-.email{
-        width: 50px;
-}
+
+
+
+/* .icons {
+  position: absolute;
+  width: 20px;
+  left: 50%;
+  bottom: 25%;
+} */
+
+
 
 
 @media screen and (min-width: 480px) {
   .mobile {
     display: none;
   }
+}
+
+
+
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.tableOfItems {
+  display: flex;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  overflow-y: auto;
+  /* width: 100%; */
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.itemUrl {
+  height: 20px;
+  width: 200px;
+}
+
+.adminSorting {
+  padding-bottom: 30px;
+}
+
+.addProductBtn {
+  background-color: #4e2116;
+  color: #fff4f0;
+  font-weight: bold;
+  width: 200px;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.col-2 {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+.itemUrl {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.formFields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#saveEdit {
+  width: 100%;
+}
+
+.editFormInput {
+  width: 100%;
+
+}
+
+
+.formContact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  gap: 14px;
+  padding-top: 60px;
+}
+
+/* .contactContainer {
+  background: pink;
+} */
+
+
+
+.contactContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.contactFormDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactInfoDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headingContact {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  font-size: 400%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.information {
+  font-family: "DM Serif Display", serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phoneIcon {
+  width: 40px;
+}
+
+.emailIcon {
+  width: 40px;
+}
+
+.locationIcon {
+  width: 40px;
+}
+
+.informationSpan {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 480px) {
+  .contactContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .formContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    gap: 14px;
+    padding-top: 60px;
+  }
+
+  .headingContact {
+    font-family: 'Hammersmith One', sans-serif;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
 }

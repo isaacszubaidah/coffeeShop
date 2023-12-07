@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("pageContent").style.display = "flex";
   }, 1500);
 });
-let purchased =JSON.parse(localStorage.getItem("purchased")) || [];;
+let purchased = JSON.parse(localStorage.getItem("purchased")) || [];;
 let checkoutCount = document.getElementById("checkoutCount");
 
 let main = document.querySelector("main");
