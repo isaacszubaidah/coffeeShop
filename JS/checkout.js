@@ -60,11 +60,22 @@ function handlePayment() {
   purchased = [];
   totalAmountElement.textContent = "R0.00";
   payNowButton.style.display = "none";
-  alert("Payment successful!");
+  // alert("Payment successful!");
+  document.getElementById("customAlertModal").style.display = "block";
   checkOutItems(); // You can also call renderCheckoutItems() if that's the correct function
 }
 
 checkOutItems();
+
+let closeModalPaymentBtn = document.getElementById("closeModalPaymentBtn")
+
+let closeModalPayment = closeModalPaymentBtn.addEventListener("click", closeCustomAlertModal);
+
+function closeCustomAlertModal() {
+  document.getElementById("customAlertModal").style.display = "none";
+}
+
+
 
 function getCurrentYear() {
   try {
