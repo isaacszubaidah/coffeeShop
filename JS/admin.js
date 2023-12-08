@@ -50,19 +50,22 @@ document
 function addToLocalStorage(event) {
   event.preventDefault();
 
+  //below I am using DOM Manipulation
   const itemPrice = document.getElementById("itemPrice").value;
   const itemName = document.getElementById("itemName").value;
   const itemDescription = document.getElementById("itemDescription").value;
   const itemUrl = document.getElementById("itemUrl").value;
   const itemType = document.getElementById("itemType").value;
 
+  //this code creates a validation check on the retrieved values
   if (isNaN(itemPrice) || !itemName || !itemDescription || !itemUrl || !itemType) {
     alert("Please add in all values.");
     return;
   }
 
+  //here I am creating an object
   const objectConstruct = new Constructor(
-    items.length + 1,
+    items.length + 1, //this is used to generate a new index or Id for theobject created
     itemName,
     itemDescription,
     itemPrice,
@@ -73,7 +76,7 @@ function addToLocalStorage(event) {
   console.log("objectConstruct", objectConstruct);
   items.push(objectConstruct);
 
-
+// this code below is setting the property values to an empty string
   document.getElementById("itemPrice").value = "";
   document.getElementById("itemName").value = "";
   document.getElementById("itemDescription").value = "";
@@ -92,6 +95,7 @@ function editItem(index) {
   const editedUrlInput = document.getElementById("editedUrl");
   const editedType = document.getElementById("editedType");
   const saveButton = document.getElementById("saveEdit");
+  // calling the ids I set in the html to enable DOM M anipulation
 
   editedNameInput.value = items[index].name;
   editedDescriptionInput.value = items[index].description;
@@ -99,7 +103,7 @@ function editItem(index) {
   editedUrlInput.value = items[index].url;
   editedType.value = items[index].type;
 
-  modal.style.display = "block";
+  modal.style.display = "block";//this sets the style the modal to display block
 
   saveButton.onclick = function () {
     const editedName = editedNameInput.value;
@@ -108,6 +112,7 @@ function editItem(index) {
     const editedUrl = editedUrlInput.value;
     const editedTypes = editedType.value;
 
+    //If all inputs are valid  not empty, price is a valid number, and URL is present, it updates the corresponding items array at the specified index with the new values.
     if (
       editedName &&
       editedDescription &&
@@ -123,9 +128,10 @@ function editItem(index) {
 
       setArrayItems();
       storeItems();
-      modal.style.display = "none";
+      //calls the functions mentioned above in order to modify the edited products
+      modal.style.display = "none"; //then the modal will be hidden with this 
     } else {
-      alert("Invalid input. Editing canceled.");
+      alert("Invalid input. Editing canceled.");//this alert will come up once 
     }
   };
 }
@@ -191,6 +197,7 @@ if (itemsSavedInLocalStorage.length > 0) {
 
 let table = document.querySelector("table");
 
+//this function displays the items into a table so when loaded the content will be presented into the table
 function storeItems() {
   let headerRow = `
     <tr>
@@ -203,7 +210,6 @@ function storeItems() {
       <th scope="col">Delete Product</th>
     </tr>
   `;
-
   let products = items.map(function (item, index) {
     return `
       <tr class="adminTable col-12">
@@ -217,7 +223,7 @@ function storeItems() {
       </tr>
     `;
   });
-
+//here I am joinig both the row and the products
   table.innerHTML = headerRow + products.join("");
 
   let deleteButtons = document.querySelectorAll(".delete");
@@ -232,7 +238,7 @@ function storeItems() {
 // this function removes only the first item
 function remove(position) {
   console.log("🚀 ~ file: admin.js:238 ~ remove ~ position:", position)
-  items.splice(position, 1);
+  items.splice(position, 1); //this deletes only the first item
   setArrayItems();
   storeItems();
 }
