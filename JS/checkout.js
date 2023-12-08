@@ -20,6 +20,7 @@ function checkOutItems() {
   itemCounter = {};
   let totalCost = 0;
 
+  //this code iterates through each item in the purchased array, counts the occurrences of each item's name using an object itemCounter and calculates the total cost by summing up the prices of all items in the array.
   purchased.forEach((item) => {
     const itemName = item.name;
     itemCounter[itemName] = (itemCounter[itemName] || 0) + 1;
