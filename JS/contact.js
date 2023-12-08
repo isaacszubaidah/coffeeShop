@@ -1,3 +1,4 @@
+
 function getCurrentYear() {
   try {
     const currentDate = new Date();
