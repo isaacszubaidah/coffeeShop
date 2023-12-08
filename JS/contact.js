@@ -6,3 +6,4 @@ function getCurrentYear() {
   
   // Call the function to set the current year when the page loads
   getCurrentYear();
+
