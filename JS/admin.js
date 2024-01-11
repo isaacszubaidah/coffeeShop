@@ -145,7 +145,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Pastry Catering",
     "This is better than the fake",
     15,
-    "https://i.postimg.cc/hv84NT0F/Espresso-Yourself-3.png",
+    "https://i.imgur.com/Mbuc0nR.png",
     "pastry"
   );
   let item2 = new Constructor(
@@ -153,7 +153,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Fresh Croissants",
     "A little bliss in every bite",
     15,
-    "https://i.postimg.cc/253pnhbk/Espresso-Yourself-2.png",
+    "https://i.imgur.com/f2YF5Zq.png",
     "croissants"
   );
   let item3 = new Constructor(
@@ -161,7 +161,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Breakfast Bagel",
     "I am a bagel with soul.",
     50,
-    "https://i.postimg.cc/pr4vchPK/Fully-Loaded-Salmon-Bagel-Sandwich-Something-About-Sandwiches-1.jpg",
+    "https://i.imgur.com/eeflkac.jpg",
     "bagel"
   );
   let item4 = new Constructor(
@@ -169,7 +169,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Biscoffee",
     "Iced Coffee with a side of Lotus Biscoff Desserts.",
     75,
-    "https://i.postimg.cc/GtSV3ZNR/Dalgona-Coffee-Inspo.jpg",
+    "https://i.imgur.com/bqYCxry.jpg",
     "biscoffee"
   );
   let item5 = new Constructor(
@@ -177,7 +177,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Caffe Latte",
     " Sip into a world of possibilities with our lattes",
     45,
-    "https://i.postimg.cc/0jGtRBSk/download.jpg",
+    "https://i.imgur.com/TfRyTYB.jpg",
     "cafe"
   );
   let item6 = new Constructor(
@@ -185,7 +185,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Filter Coffee",
     "Better Beans, Better Coffee",
     50,
-    "https://i.postimg.cc/k595FjNQ/Dining-Essentials-Made-Easy-with-Your-Bloomingdale-s-Registry.jpg",
+    "https://i.imgur.com/XzwmKJv.jpg",
     "filter"
   );
   // push default items into the array
