@@ -121,10 +121,11 @@ function getCurrentItems() {
     }
   } catch (error) {
     alert("Error during getCurrentItems:", error);
-  }
+  } //handles any error that might occur during the process
 }
+// the code above finds the currently selected item based on which button has the "active" class. If there's no active button, it returns all items
 
-
+//I am creating an eventlistener for each button and then passing in a function to enable it to run together andfter thatt I a also making it  active
 pastryButton.addEventListener("click", function () {
   itemsToShow(pastry);
   activateButton(pastryButton);
@@ -159,6 +160,7 @@ function activateButton(button) {
   button.classList.add("active");
 }
 
+//is designed to remove the active class from a set of buttons or elements, presumably to ensure that none of them appear as actively selected or highlighted after its execution.
 function deactivateAllButtons() {
   pastryButton.classList.remove("active");
   croissantsButton.classList.remove("active");
