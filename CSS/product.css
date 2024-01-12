@@ -17,6 +17,13 @@
   color: white;
 }
 
+
+.main-logo{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  }
+
 .footerTag {
   width: 100%;
   /* max-width: 1220px; */
