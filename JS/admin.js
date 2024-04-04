@@ -144,7 +144,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     1,
     "Pastry Catering",
     "This is better than the fake",
-    15,c
+    15,
     "https://lh3.googleusercontent.com/drive-viewer/AEYmBYRfLlY9-qnuXdbVOTTHaZYMI5_auhHVCOaBU2f_wdNdWvtPkARDdYQnill8KnwC-9Es2oqsi4_NEj_V_pSjo_9vCbvERg=s2560",
     "pastry"
   );
@@ -153,7 +153,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Fresh Croissants",
     "A little bliss in every bite",
     15,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYTJRPZk1X3XrmIFX15JALBmTlnizRqyc-LqFXfO__zfbIBW3tXy5w6z0l2aamhJWMOaQODtLkCQTU_fpxc5v6U4ughT=s2560",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihaDRKJqmPzY9VUip1ooEdDIQimI0bhjRO4trMFoMK8KLXXaUllQo-FskP-ZAgiQOYiGg3Ejc37RaKLOTB5VEXHtSCGk3r2cAg=s2560",
     "croissants"
   );
   let item3 = new Constructor(
@@ -161,7 +161,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Breakfast Bagel",
     "I am a bagel with soul.",
     50,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYTXqtHZrZQzETYuMuA1VxA8axIryUugTYBHQt0wjmgeUxCKI5FovoOFiXz09S4OfXdbvT7VkYnwSisEHZudvZUeqVBByQ=s1600",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihZRPzPGaJC_H3XLpAk5yp6bEtDU6W7zpnQWL4bwC9LoukiQHJj39Ap2AdlzeH_W5m_wu8gmf_sgiqJebbBYxjjDWuQpaBCLukk=s1600-v0",
     "bagel"
   );
   let item4 = new Constructor(
@@ -169,7 +169,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Biscoffee",
     "Iced Coffee with a side of Lotus Biscoff Desserts.",
     75,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYTBtHcuP8svpMfysrdVhvHIIO9H7V00dNuVNorWdV0bYzDz2Altd-Ag9lZxnMpEb2LGMqCfKq5K9-0nuxNY-nh2rEX_FQ=s2560",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihZ_r0KRhkjY9XLrw-p4D_zxCYCC5B912uS8Lx5_zs2HCaA3UC3T4MGLeU3u8dm5nQSPaZ3rz7iAG66oaeR54mDVd_taCBpzd_A=s2560",
     "biscoffee"
   );
   let item5 = new Constructor(
@@ -177,7 +177,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Caffe Latte",
     " Sip into a world of possibilities with our lattes",
     45,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYRJ6LS1wgQpvVkIzkvfhSESnL_Uvhc5GTco5I3auUh78mbog8xMHzGmu8j9TWb6_nCVsWFRYyWkRBSWRXZr8C_asWvt=s1600",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihaOXr54xHDghlhzMUvi6WeRU8bhfJawMYWcjST8Z0haJ2UJ18VL7A7Qta46d9rPQDg1J0vWzm7c3lrJiaFRcCz0Ad0yfke6rpM=s1600-v0",
     "cafe"
   );
   let item6 = new Constructor(
@@ -185,7 +185,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Filter Coffee",
     "Better Beans, Better Coffee",
     50,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYSJXwv8h72S96hotCfLg_78hBm5j1NdcEVb5FUTqW3dF65r0agqlF446X0AI1GLialdttUi_K3LJ9TM2KjnbaZgfTox=s1600",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihY4yk279gXeTrZxEMbGSOTTxJnu42keL2zgxsEVrmpneIUSIx2ugtQtbMdXdl9ZndNPbXFkOGmG-OHqB00XeFaTrnrynOb2Zmg=s1600-v0",
     "filter"
   );
   // push default items into the array
