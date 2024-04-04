@@ -145,7 +145,7 @@ if (itemsSavedInLocalStorage.length > 0) {
     "Pastry Catering",
     "This is better than the fake",
     15,
-    "https://lh3.googleusercontent.com/drive-viewer/AEYmBYRfLlY9-qnuXdbVOTTHaZYMI5_auhHVCOaBU2f_wdNdWvtPkARDdYQnill8KnwC-9Es2oqsi4_NEj_V_pSjo_9vCbvERg=s2560",
+    "https://lh3.googleusercontent.com/drive-viewer/AKGpihaOXr54xHDghlhzMUvi6WeRU8bhfJawMYWcjST8Z0haJ2UJ18VL7A7Qta46d9rPQDg1J0vWzm7c3lrJiaFRcCz0Ad0yfke6rpM=s1600-v0",
     "pastry"
   );
   let item2 = new Constructor(
